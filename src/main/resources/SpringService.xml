@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        ">
+    <!-- 扫描service层下的包的注解 -->
+        <context:component-scan base-package="com.zhanglin.service"/>
+    <!-- 将所有的业务类注入到Spring中，可以通过配置也可以通过上述注解实现 -->
+    <bean id="BookServiceImpl" class="com.zhanglin.service.BookServiceImpl">
+        <property name="bookMapper" ref="bookMapper"/>
+    </bean>
+    <!--
+        配置声明式事务:
+            Spring给了一个约定（AOP开发也给了我们一个约定），如果使用的是声明式事务，那么当你的业务方法不发生异常
+            （或者发生异常，但该异常也被配置信息允许提交事务）时，Spring就会让事务管理器提交事务，
+            而发生异常（并且该异常不被你的配置信息所允许提交事务）时，则让事务管理器回滚事务。
+    -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 注入数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+</beans>

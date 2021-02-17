@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+        ">
+    <!-- 读取参数配置文件 -->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--
+        配置数据库连接池:
+        dbcp: 稳定老技术 半自动化操作，不能自动连接
+        c3p0: 稳定老技术 自动化操作，自动化的加载配置文件，并且可以自动的设置到对象中
+        druid: 很强大 （商用）
+        hikari:SpringBoot 2.x 内置高级数据连接池 （商用）
+    -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driver}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="user" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 绑定数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 绑定Mybatis的配置文件 -->
+        <property name="configLocation" value="classpath:mybatisConfig.xml"/>
+    </bean>
+
+    <!-- 配置dao接口扫描包，动态的实现了Dao接口可以注入到Spring容器中！ -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 注入sqlSessionFactory -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- 扫描dao包 -->
+        <property name="basePackage" value="com.zhanglin.dao"/>
+    </bean>
+</beans>
