@@ -1,0 +1,8 @@
+1.增加手动lib目录jar包管理；
+修改web.xml中的applicationContext引用
+applicationContext文件中修改错误语法
+修改驱动地址
+url=jdbc:mysql://localhost:3306/ssmbuild?useSSL=false&allowPublicKeyRetrieval=true
+*********************
+最终解决：
+        把SpringDao中user的配置直接写死成root；
