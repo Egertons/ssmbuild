@@ -7,6 +7,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
         ">
+    <!-- Spring层配置文件 -->
     <!-- 扫描service层下的包的注解 -->
         <context:component-scan base-package="com.zhanglin.service"/>
     <!-- 将所有的业务类注入到Spring中，可以通过配置也可以通过上述注解实现 -->
