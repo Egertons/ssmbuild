@@ -25,4 +25,9 @@ public class BooksController {
         return "allbook";
     }
 
+    @RequestMapping("/add")
+    public String addBook(){
+        return "add";
+    }
+
 }
