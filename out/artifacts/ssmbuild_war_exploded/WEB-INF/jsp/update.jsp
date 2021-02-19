@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>新增书籍</title>
+        <title>修改书籍详情</title>
         <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" rel="stylesheet">
         <style type="text/css">
             #first{
@@ -40,27 +40,28 @@
                     </button>
                 </div>
                 <div class="col-md" id="Title">
-                    <h3>新增书籍</h3>
+                    <h3>修改书籍</h3>
                 </div>
                 <div class="col-md"></div>
             </div>
             <div class="row" id="second">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <form action="${pageContext.request.contextPath}/book/add" method="post">
+                    <form action="${pageContext.request.contextPath}/book/update" method="post">
+                        <input type="hidden" name="bookID" value="${books.bookID}">
                         <div class="form-group">
                             <label>书籍名称：</label>
-                            <input type="text" name="bookName" class="form-control" required>
+                            <input type="text" name="bookName" class="form-control" value="${books.bookName}">
                         </div>
                         <div class="form-group">
                             <label>书籍数量：</label>
-                            <input type="text" name="bookCounts" class="form-control" required>
+                            <input type="text" name="bookCounts" class="form-control" value="${books.bookCounts}" >
                         </div>
                         <div class="form-group">
                             <label>书籍描述：</label>
-                            <input type="text" name="detail" class="form-control" required>
+                            <input type="text" name="detail" class="form-control" value="${books.detail}" >
                         </div>
-                        <button type="submit" class="btn btn-success">提交添加</button>
+                        <button type="submit" class="btn btn-success">提交修改</button>
                     </form>
                 </div>
                 <div class="col-md-2"></div>

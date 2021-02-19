@@ -4,32 +4,36 @@
     <title>首页</title>
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
+      #title{
+        height: 300px;
+        text-align: center;
+        margin-top: 100px;
+      }
       #title a{
-        width: 180px;
-        height: 38px;
-        letter-spacing: 50px;
+        letter-spacing: 20px;
         font-size: 20px;
         font-weight: bolder;
-        padding-top: 120px;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 30px;
+        padding-right: inherit;
         text-decoration: none;
-        color: aqua;
-        padding-left: 200px;
-        margin: 100px auto;
+        color: #FFCCCC;
+        border-radius: 5px;
+        background-color: #FF9999;
       }
     </style>
   </head>
   <body>
-    <div id="title">
-      <a href="${pageContext.request.contextPath}/book/all">
-          进入书籍展示页面
-      </a>
-    </div>
-    <div class="row">
-      <div class="col-md-4 column">
-        <button>
-          <a href="${pageContext.request.contextPath}/book/add">新增书籍</a>
-        </button>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md"></div>
+        <div class="col-md" id="title">
+          <a href="${pageContext.request.contextPath}/book/admin">
+            进入书籍管理中心
+          </a>
+        </div>
+        <div class="col-md"></div>
       </div>
     </div>
   </body>
