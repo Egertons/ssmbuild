@@ -23,4 +23,7 @@
     <select id="queryAllBooks" resultType="Books">
         select * from books;
     </select>
+    <select id="queryByBookName" resultType="books">
+        select * from books where bookName = #{name};
+    </select>
 </mapper>

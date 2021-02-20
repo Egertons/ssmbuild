@@ -41,6 +41,20 @@
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
+                    <form class="form-inline" action="${pageContext.request.contextPath}/book/select" method="post" style="float: right">
+                        <span style="color: maroon;font-weight: bolder;letter-spacing: 3px">${err}</span>
+                        &nbsp;&nbsp;
+                        <input type="text" class="form-control" name="name" placeholder="请输入书籍名称">
+                        &nbsp;&nbsp;
+                        <input type="submit" value="查询" class="btn btn-success">
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
                     <table class="table table-hover table-striped">
                         <thead>
                             <tr>

@@ -15,4 +15,6 @@ public interface BookService {
     public Books queryById(int id);
     //查询全部的书
     public List<Books> queryAllBooks();
+    //搜索功能
+    public Books queryByBookName(String name);
 }
